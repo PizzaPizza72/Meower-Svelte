@@ -1,27 +1,27 @@
-# Meower Svelte
+# Meower Svelte Desktop
 
-A Meower client written in [Svelte](https://svelte.dev).
+A desktop version of Meower [Svelte](https://svelte.dev) made with [Tauri](https://tauri.app).
 
 ## Developing
 
 Requirements:
 - node.js and npm or some other package manager
 - git (optional, for cloning the repo)
-- Preferably understanding of JavaScript and node.js, among ~~us~~ other things
+- Preferably understanding of JavaScript, node.js, and Tauri, among ~~us~~ other things
 
 To clone and run a development server on your machine (that autoupdates when you modify files):
 
 ```
-git clone https://github.com/meower-media-co/Meower-Svelte
-cd Meower-Svelte
+git clone -b desktop https://github.com/meower-media-co/Meower-Svelte Meower-Svelte-Desktop
+cd Meower-Svelte-Desktop
 npm install
-npm run dev
+npm run tauri dev
 ```
 
 For one-time building:
 
 ```
-npm run build
+npm run tauri build
 ```
 
 (Note: A GitHub Action will usually do this for you when you push to the repo.)

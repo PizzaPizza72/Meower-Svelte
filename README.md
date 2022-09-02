@@ -12,7 +12,7 @@ Requirements:
 To clone and run a development server on your machine (that autoupdates when you modify files):
 
 ```
-git clone -b desktop https://github.com/meower-media-co/Meower-Svelte/tree/desktop Meower-Svelte-Desktop
+git clone -b desktop https://github.com/meower-media-co/Meower-Svelte Meower-Svelte-Desktop
 cd Meower-Svelte-Desktop
 npm install
 npm run tauri dev

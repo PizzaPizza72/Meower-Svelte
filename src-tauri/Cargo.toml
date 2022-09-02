@@ -1,11 +1,11 @@
 [package]
-name = "Meower"
+name = "meower"
 version = "0.1.0"
 description = "The Meower desktop app"
 authors = ["Meower Media Co."]
 license = ""
 repository = ""
-default-run = "app"
+default-run = "meower"
 edition = "2021"
 rust-version = "1.57"
 

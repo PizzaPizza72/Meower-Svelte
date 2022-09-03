@@ -9,7 +9,7 @@
 	import Sidebar from "./Sidebar.svelte";
 
 	import {mainPage as page} from "../lib/stores.js";
-
+	import Notifications from "../lib/notifications.svelte";
 	page.set("home");
 </script>
 
@@ -35,6 +35,7 @@
 		{/if}
 	</div>
 </div>
+<Notifications />
 
 <style>
 	.main-screen {

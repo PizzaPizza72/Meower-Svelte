@@ -14,6 +14,7 @@
 	import sleep from "../lib/sleep.js";
 
 	let logo, setup, logoImg, loginStatus = "";
+	let _meowerNotifications = localStorage.getItem("meower_notifications");
 
 	let acceptTerms = false;
 

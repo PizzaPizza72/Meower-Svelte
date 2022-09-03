@@ -8,6 +8,7 @@
 	import {user, screen, setupPage} from "../lib/stores.js";
 	import * as clm from "../lib/clmanager.js";
 
+	let _meowerNotifications = localStorage.getItem("meower_notifications");
 	let delete1 = false, delete2 = false, delete3 = false, delete4 = false, delete5 = false;
 	async function checkDelete() {
 		if (delete1 && delete2 && delete3 && delete4 && delete5) {
@@ -164,7 +165,29 @@
 	<h2>Delete Account</h2>
 	THIS CANNOT BE UNDONE. Enable all the switches to delete your account, if you are really sure.
 </Container>
+<Container>
+	<h1>Client Settings</h1>
+	These settings will only apply for Meower Desktop, and are saved on your device.
+</Container>
+<Container>
+	<div class="settings-controls">
+		<input
+			type="checkbox"
+			checked={localStorage.getItem("meower_notifications") === "true"}
+			on:change={(e)=>{
+				const val = String(e.currentTarget.checked);
+				localStorage.setItem(
+					"meower_notifications",
+					val
+				);
+				_meowerNotifications = val;
+			}}
+		>
+	</div>
 
+	<h2>Desktop Notifications</h2>
+	Notifications are currently {$user.mode ? "disabled" : "enabled"}.
+</Container>
 <div class="eee"></div>
 
 <style>

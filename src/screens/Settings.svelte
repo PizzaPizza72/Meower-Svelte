@@ -67,7 +67,7 @@
 	</form>
 -->
 <Container>
-	<h1>Settings</h1>
+	<h1>Account Settings</h1>
 	You can change your settings here. These will save to your account, so they will carry over into other clients.
 </Container>
 <Container>
@@ -121,6 +121,24 @@
 
 	<h2>Dark Mode</h2>
 	Dark mode is currently {$user.mode ? "disabled" : "enabled"}.
+</Container>
+<Container>
+	<div class="settings-controls">
+		<input
+			type="checkbox"
+			checked={$user.sfx}
+			on:change={()=>{
+				const _user = $user;
+				_user.sfx = !_user.sfx;
+				user.set(_user);
+
+				clm.updateProfile();
+			}}
+		>
+	</div>
+
+	<h2>Sound Effects</h2>
+	Sound effects are currently {$user.sfx ? "disabled" : "enabled"}.
 </Container>
 <Container>
 	<div class="settings-controls">

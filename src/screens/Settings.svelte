@@ -1,44 +1,12 @@
 <!-- You probably know what this is. -->
 
 <script>
-	import {tick} from "svelte";
-
 	import Container from "../lib/Container.svelte";
 
-	import {user, screen, setupPage} from "../lib/stores.js";
+	import {user, modalShown, modalPage} from "../lib/stores.js";
 	import * as clm from "../lib/clmanager.js";
 
 	let _meowerNotifications = localStorage.getItem("meower_notifications");
-	let delete1 = false, delete2 = false, delete3 = false, delete4 = false, delete5 = false;
-	async function checkDelete() {
-		if (delete1 && delete2 && delete3 && delete4 && delete5) {
-			if ($user.name === localStorage.getItem("meower_savedusername")) {
-				localStorage.removeItem("meower_savedusername");
-				localStorage.removeItem("meower_savedpassword");
-			}
-
-			await clm.meowerRequest({cmd: "direct", val: {cmd: "del_account", val: ""}});
-			
-			screen.set("setup");
-			await tick();
-			setupPage.set("reconnect");
-		}
-	}
-
-	async function change_pswd() {
-		let pswd = prompt("Enter your new password:");
-		if (pswd === null) return;
-		if ($user.name === localStorage.getItem("meower_savedusername")) {
-			localStorage.removeItem("meower_savedusername");
-			localStorage.removeItem("meower_savedpassword");
-		}
-
-		await clm.meowerRequest({cmd: "direct", val: {cmd: "change_pswd", val: pswd}});
-		
-		screen.set("setup");
-		await tick();
-		setupPage.set("reconnect");
-	}
 </script>
 
 <!--
@@ -67,7 +35,7 @@
 	</form>
 -->
 <Container>
-	<h1>Account Settings</h1>
+	<h1>Settings</h1>
 	You can change your settings here. These will save to your account, so they will carry over into other clients.
 </Container>
 <Container>
@@ -138,13 +106,17 @@
 	</div>
 
 	<h2>Sound Effects</h2>
-	Sound effects are currently {$user.sfx ? "disabled" : "enabled"}.
+	Sound effects are currently {!$user.sfx ? "disabled" : "enabled"}.
 </Container>
+{#if $user.name}
 <Container>
 	<div class="settings-controls">
 		<button
 			class="circle settings"
-			on:click={change_pswd}
+			on:click={() => {
+				$modalPage = "changePassword";
+				$modalShown = true;
+			}}
 		></button>
 	</div>
 
@@ -153,55 +125,18 @@
 </Container>
 <Container>
 	<div class="settings-controls">
-		<input
-			type="checkbox"
-			bind:checked={delete1}
-			on:change={checkDelete}
-		>
-		<input
-			type="checkbox"
-			bind:checked={delete2}
-			on:change={checkDelete}
-		>
-		<input
-			type="checkbox"
-			bind:checked={delete3}
-			on:change={checkDelete}
-		>
-		<input
-			type="checkbox"
-			bind:checked={delete4}
-			on:change={checkDelete}
-		>
-		<input
-			type="checkbox"
-			bind:checked={delete5}
-			on:change={checkDelete}
-		>
+		<button
+			class="circle settings"
+			on:click={() => {
+				$modalPage = "deleteAccount";
+				$modalShown = true;
+			}}
+		></button>
 	</div>
 
 	<h2>Delete Account</h2>
-	THIS CANNOT BE UNDONE. Enable all the switches to delete your account, if you are really sure.
+	Permanently delete your Meower account. THIS CANNOT BE UNDONE.
 </Container>
-<Container>
-	<h1>Client Settings</h1>
-	These settings will only apply for Meower Desktop, and are saved on your device.
-</Container>
-<Container>
-	<div class="settings-controls">
-		<input
-			type="checkbox"
-			checked={localStorage.getItem("meower_notifications") === "true"}
-			on:change={(e)=>{
-				const val = String(e.currentTarget.checked);
-				localStorage.setItem(
-					"meower_notifications",
-					val
-				);
-				_meowerNotifications = val;
-			}}
-		>
-	</div>
 
 	<h2>Desktop Notifications</h2>
 	Notifications are currently {$user.mode ? "disabled" : "enabled"}.

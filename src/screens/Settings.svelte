@@ -108,7 +108,6 @@
 	<h2>Sound Effects</h2>
 	Sound effects are currently {!$user.sfx ? "disabled" : "enabled"}.
 </Container>
-{#if $user.name}
 <Container>
 	<div class="settings-controls">
 		<button
@@ -137,6 +136,25 @@
 	<h2>Delete Account</h2>
 	Permanently delete your Meower account. THIS CANNOT BE UNDONE.
 </Container>
+<Container>
+	<h1>Client Settings</h1>
+	These settings will only apply for Meower Desktop, and are saved on your device.
+</Container>
+<Container>
+	<div class="settings-controls">
+		<input
+			type="checkbox"
+			checked={localStorage.getItem("meower_notifications") === "true"}
+			on:change={(e)=>{
+				const val = String(e.currentTarget.checked);
+				localStorage.setItem(
+					"meower_notifications",
+					val
+				);
+				_meowerNotifications = val;
+			}}
+		>
+	</div>
 
 	<h2>Desktop Notifications</h2>
 	Notifications are currently {$user.mode ? "disabled" : "enabled"}.

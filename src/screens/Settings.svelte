@@ -157,7 +157,7 @@
 	</div>
 
 	<h2>Desktop Notifications</h2>
-	Notifications are currently {$user.mode ? "disabled" : "enabled"}.
+	Notifications are currently {_meowerNotifications == "true" ? "enabled" : "disabled"}.
 </Container>
 <div class="eee"></div>
 

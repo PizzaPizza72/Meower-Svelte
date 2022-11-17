@@ -54,21 +54,21 @@
 			<div slot="default">
 				<p>
 					{#if $disconnectReason === ""}
-						Something went wrong and the connection to Meower was lost.
+						Quelque chose s'est mal passé et la connexion à Meower a été perdue.
 					{:else if $disconnectReason === "Failed to load userdata"}
-						An unexpected error occurred while trying to load your userdata! Check console for more information.
+						Une erreur inattendue s'est produite lors de la tentative de chargement de vos données utilisateur ! Consultez la console pour plus d'informations.
 					{:else if $disconnectReason === "E:119 | IP Blocked"}
-						The server has blocked your IP address ({link.ip}).
+						Le serveur a bloqué votre adresse IP ({link.ip}).
 					{:else if $disconnectReason == "E:110 | ID conflict"}
-						There has been a hiccup! Looks like you logged into Meower from another device.
+						Il y a eu un hic ! On dirait que vous vous êtes connecté à Meower à partir d'un autre appareil.
 						<br /><br />
-						Please check any devices currently logged into Meower and try again.
+						Veuillez vérifier tous les appareils actuellement connectés à Meower et réessayer.
 					{:else if $disconnectReason == "E:018 | Account Banned"}
-						You have been banned by a moderator.
+						Vous avez été banni par un modérateur.
 					{:else if $disconnectReason == "E:020 | Kicked"}
-						You have been kicked by a moderator.
+						Vous avez été kické par un modérateur.
 					{:else}
-						We ran into an error trying to connect to the server.
+						Nous avons rencontré une erreur en essayant de nous connecter au serveur.
 						<pre><code>{$disconnectReason}</code></pre>
 					{/if}
 				</p>
@@ -77,7 +77,7 @@
 					disconnected.set(false);
 					await tick();
 					setupPage.set("reconnect");
-				}}>Reconnect</button>
+				}}>Se reconnecter</button>
 			</div>
 		</Modal>
 	{/if}

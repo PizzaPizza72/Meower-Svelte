@@ -70,7 +70,7 @@
 	<button on:click={()=>goto("home")} class="home-btn round">
 		<img
 			src={home}
-			alt="Home"
+			alt="Maison"
 			width="90%"
 			height="auto"
 			draggable={false}
@@ -79,7 +79,7 @@
 	<button on:click={()=>goto("inbox")} class="gc-btn round">
 		<img
 			src={$user.unread_inbox ? mail_new : mail}
-			alt="Inbox Messages"
+			alt="Messages de la boîte de réception"
 			width="90%"
 			height="auto"
 			draggable={false}
@@ -94,7 +94,7 @@
 	}} class="gc-btn round">
 		<img
 			src={gc}
-			alt="Group Chats"
+			alt="Discussions de groupe"
 			width="90%"
 			height="auto"
 			draggable={false}
@@ -106,7 +106,7 @@
 	}} class="profile-btn round">
 		<img
 			src={profile}
-			alt="Profile"
+			alt="Profil"
 			width="90%"
 			height="auto"
 			draggable={false}
@@ -115,7 +115,7 @@
 	<button on:click={()=>goto("settings")} class="settings-btn round">
 		<img
 			src={settings}
-			alt="Settings"
+			alt="Réglages"
 			width="90%"
 			height="auto"
 			draggable={false}
@@ -127,7 +127,7 @@
 	}} class="logout-btn round">
 		<img
 			src={logout}
-			alt="Log out"
+			alt="Se déconnecter"
 			width="90%"
 			height="auto"
 			draggable={false}

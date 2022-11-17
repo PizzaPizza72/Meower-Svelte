@@ -114,7 +114,7 @@
 		>
 			<PFP
 				icon={$profileCache[post.user] ? $profileCache[post.user].pfp_data : -3}
-				alt="{post.user}'s profile picture"
+				alt="{post.user}'s image de profil"
 				online={$ulist.includes(post.user)}
 			></PFP>
 		</button>
@@ -123,7 +123,7 @@
 
 			<FormattedDate date={post.date}></FormattedDate>
 			{#if bridged}
-				<i>[BRIDGED]</i>
+				<i>[PONTÉ]</i>
 			{/if}
 		</div>
 	</div>

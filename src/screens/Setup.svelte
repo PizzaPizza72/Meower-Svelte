@@ -57,7 +57,7 @@
 				logo.classList.add("top");
 
 				await sleep(700);
-				loginStatus = "Connecting...";
+				loginStatus = "De liaison...";
 				await connect();
 
 				if (localStorage.getItem("meower_savedusername") && localStorage.getItem("meower_savedpassword")) {
@@ -94,7 +94,7 @@
 	*/
 	function doLogin(username, password, autoLogin = false) {
 		try {
-			loginStatus = "Logging in...";
+			loginStatus = "Se connecter...";
 			clm.meowerRequest({
 				cmd: "direct",
 				val: {
@@ -135,10 +135,10 @@
 
 				switch (code) {
 					case "E:103 | ID not found":
-						loginStatus = "Invalid username!";
+						loginStatus = "Nom d'utilisateur invalide!";
 						break;
 					case "I:011 | Invalid Password":
-						loginStatus = "Invalid password!";
+						loginStatus = "Mot de passe incorrect!";
 						break;
 					case "E:018 | Account Banned":
 						$modalPage = "banned";
@@ -146,20 +146,20 @@
 						loginStatus = "";
 						break;
 					case "E:019 | Illegal characters detected":
-						loginStatus = "Usernames must not have spaces or other special characters!";
+						loginStatus = "Les noms d'utilisateur ne doivent pas contenir d'espaces ou d'autres caractères spéciaux !";
 						break;
 					case "E:106 | Too many requests":
-						loginStatus = "Too many requests! Please try again later.";
+						loginStatus = "Trop de demandes ! Veuillez réessayer plus tard.";
 						break;
 					default:
-						loginStatus = `Unexpected ${code} error!`;
+						loginStatus = `Erreur inattendue : ${code}`;
 				}
 			});
 		} catch(e) {
 			if (autoLogin) return mainSetup();
 
 			console.error(e);
-			loginStatus = "Error logging in: " + e;
+			loginStatus = "Erreur de connexion : " + e;
 		}
 	}
 </script>
@@ -182,7 +182,7 @@
 		</div>
 	{:else if $page === "reconnect"}
 		<div class="fullcenter">
-			Reconnecting...
+			Reconnexion...
 		</div>
 	{:else if $page === "welcome"}
 		<div class="fullcenter">
@@ -196,8 +196,8 @@
 					/>
 					<br /><br />
 				</div>
-				<button on:click={() => page.set("login")}>Log in</button> <br />
-				<button on:click={() => page.set("join")}>Create an account</button> <br />
+				<button on:click={() => page.set("login")}>Connexion</button> <br />
+				<button on:click={() => page.set("join")}>Créer un compte</button> <br />
 				{#if localStorage.getItem("meower_savedusername")}
 					<button on:click={() => {
 						rememberMe = true;
@@ -205,15 +205,15 @@
 							localStorage.getItem("meower_savedusername"),
 							localStorage.getItem("meower_savedpassword"),
 						)
-					}}>Use saved login ({localStorage.getItem("meower_savedusername")})</button>
+					}}>Utiliser la connexion enregistrée ({localStorage.getItem("meower_savedusername")})</button>
 					<p class="small">{loginStatus}</p>
 				{/if}
 				<button on:click={() => {
 					loginStatus = "";
 					page.set("blank");
 					screen.set("main");
-				}}>Skip</button>
-				<p class="small">(Several features will be unavailable while not logged in.)</p>
+				}}>Sauter</button>
+				<p class="small">(Plusieurs fonctionnalités seront indisponibles si vous n'êtes pas connecté)</p>
 				<div>
 					<p class="small">
 						Meower Svelte v1.4.1
@@ -228,12 +228,12 @@
 		</div>
 	{:else if $page === "login"}
 		<div class="fullcenter">
-			<h1>Login to Meower</h1>
+			<h1>Connectez-vous à Meower</h1>
 			
 			<form class="column-ui"
 				on:submit|preventDefault={e => {
 					if (!(e.target[0].value && e.target[1].value)) {
-						loginStatus = "You must specify a username and a password to login!";
+						loginStatus = "Vous devez spécifier un nom d'utilisateur et un mot de passe pour vous connecter !";
 						return false;
 					}
 					doLogin(
@@ -243,12 +243,12 @@
 					return false;
 				}}
 			>
-				<input type="text" placeholder="Username" maxlength="20"> <br />
-				<input type="password" placeholder="Password" maxlength="64">
+				<input type="text" placeholder="Nom d'utilisateur" maxlength="20"> <br />
+				<input type="password" placeholder="Mot de passe" maxlength="64">
 				<p class="checkboxes">
 					<input id="remember-me" type="checkbox" bind:checked={rememberMe}>
 					<label for="remember-me">
-						Save this login
+						Enregistrer cette connexion
 					</label>
 				</p>
 				<span class="login-status">{loginStatus}</span>
@@ -257,14 +257,14 @@
 						page.set("welcome");
 						loginStatus = "";
 						return false;
-					}}>Go back</button>
-					<button type="submit">Log in</button>
+					}}>Retourner</button>
+					<button type="submit">Connexion</button>
 				</div>
 			</form>
 		</div>
 	{:else if $page === "join"}
 		<div class="fullcenter">
-			<h1>Welcome to Meower</h1>
+			<h1>Bienvenue à Meower</h1>
 
 			<form class="column-ui"
 				on:submit|preventDefault={e => {

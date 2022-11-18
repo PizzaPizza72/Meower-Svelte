@@ -17,9 +17,9 @@
 	$: {
 		const _date = new Date(date * 1000);
 		text = _date.toLocaleString();
-		title = `Time is in your local timezone (UTC+${-(_date.getTimezoneOffset()/60)}).
-12-hour time: ${_date.toLocaleString([], {hourCycle: "h11"})}
-24-hour time: ${_date.toLocaleString([], {hourCycle: "h23"})}
+		title = `L'heure est dans votre fuseau horaire local (UTC+${-(_date.getTimezoneOffset()/60)}).
+Temps de 12 heures : ${_date.toLocaleString([], {hourCycle: "h11"})}
+Temps de 24 heures : ${_date.toLocaleString([], {hourCycle: "h23"})}
 ISO: ${_date.toISOString()}`;
 	}
 </script>

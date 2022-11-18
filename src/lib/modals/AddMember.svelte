@@ -14,7 +14,7 @@
 </script>
 
 <Modal on:close={() => {$modalShown = false}}>
-    <h2 slot="header">Add Member</h2>
+    <h2 slot="header">Ajouter un membre</h2>
     <div slot="default">
         <form
             on:submit|preventDefault={e => {					
@@ -30,11 +30,11 @@
                 $modalShown = false;
             }}
 		>
-            <label for="userinput"><b>Username</b></label>
+            <label for="userinput"><b>Nom d'utilisateur</b></label>
             <input
                 type="text"
                 class="long white"
-                placeholder="Username"
+                placeholder="Nom d'utilisateur"
 
                 id="userinput"
                 name="userinput"
@@ -48,8 +48,8 @@
 			<div class="modal-buttons">
 				<button type="button" on:click|preventDefault={() => {
 					$modalShown = false;
-				}}>Cancel</button>
-            	<button type="submit" disabled={!username}>Add member</button>
+				}}>Annuler</button>
+            	<button type="submit" disabled={!username}>Ajouter un membre</button>
 			</div>
         </form>
     </div>

@@ -24,11 +24,11 @@
             <span class="circle circle2"></span>
             <span class="circle circle3"></span>
             {#if _typing.length === 1}
-                <span class="text"><b>{_typing[0]}</b> is typing...</span>
+                <span class="text"><b>{_typing[0]}</b> est en train d'écrire...</span>
             {:else if _typing.length >= 5}
-                <span class="text">5 or more people are typing..</span>
+                <span class="text">5 personnes ou plus sont en train de taper...</span>
             {:else}
-                <span class="text"><b>{_typing.splice(_typing.length-1, 1).join(", ")} and {_typing[_typing.length-1]}</b> are typing...</span>
+                <span class="text"><b>{_typing.splice(_typing.length-1, 1).join(", ")} et {_typing[_typing.length-1]}</b> sont en train de taper...</span>
             {/if}
         </span>
     </Container>

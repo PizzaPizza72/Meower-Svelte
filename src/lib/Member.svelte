@@ -32,7 +32,7 @@
 		<div class="member-pfp">
 			<PFP
 				icon={pfp}
-				alt="{member}'s profile picture"
+				alt="{member}'a image de profil"
 				online={$ulist.includes(member)}
 				size={0.5}
 			></PFP>
@@ -40,7 +40,7 @@
 		<p class="member-name">{member}</p>
 	</div>
 {:else}
-	<div class="error">error loading member {member}: {error}</div>
+	<div class="error">Erreur lors du chargement du membre {member}: {error}</div>
 {/if}
 
 <style>

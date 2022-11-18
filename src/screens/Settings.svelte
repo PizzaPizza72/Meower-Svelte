@@ -33,8 +33,8 @@
 	</form>
 -->
 <Container>
-	<h1>Settings</h1>
-	You can change your settings here. These will save to your account, so they will carry over into other clients.
+	<h1>Réglages</h1>
+	Vous pouvez modifier vos paramètres ici. Ceux-ci seront enregistrés sur votre compte, de sorte qu'ils seront transférés à d'autres clients.
 </Container>
 <Container>
 	<div class="settings-controls">
@@ -50,8 +50,12 @@
 		></button>
 	</div>
 
-	<h2>Layout</h2>
-	The layout is currently set to {$user.layout}.
+	<h2>Disposition</h2>
+	{#if $user.layout === "new"}
+			<p>Le thème est actuellement défini sur <b>nouveau</b></p>
+			{:else}
+			<p>Le thème est actuellement défini sur <b>ancien</b></p>
+			{/if}
 </Container>
 <Container>
 	<div class="settings-controls">
@@ -67,8 +71,12 @@
 		></button>
 	</div>
 
-	<h2>Theme</h2>
-	The theme is currently set to {$user.theme}.
+	<h2>Thème</h2>
+	{#if $user.theme === "orange"}
+			<p>Le thème est actuellement défini sur <b>orange</b></p>
+			{:else}
+			<p>Le thème est actuellement défini sur <b>bleu</b></p>
+			{/if}
 </Container>
 <Container>
 	<div class="settings-controls">
@@ -85,8 +93,8 @@
 		>
 	</div>
 
-	<h2>Dark Mode</h2>
-	Dark mode is currently {$user.mode ? "disabled" : "enabled"}.
+	<h2>Mode sombre</h2>
+	Le mode sombre est actuellement <b>{$user.mode ? "désactivé" : "activé"}</b>.
 </Container>
 <Container>
 	<div class="settings-controls">
@@ -103,8 +111,8 @@
 		>
 	</div>
 
-	<h2>Sound Effects</h2>
-	Sound effects are currently {!$user.sfx ? "disabled" : "enabled"}.
+	<h2>Effets sonores</h2>
+	Les effets sonores sont actuellement <b>{!$user.sfx ? "désactivé" : "activé"}</b>.
 </Container>
 {#if $user.name}
 <Container>
@@ -118,8 +126,8 @@
 		></button>
 	</div>
 
-	<h2>Change Password</h2>
-	Change your account password.
+	<h2>Changer le mot de passe</h2>
+	Modifiez le mot de passe de votre compte.
 </Container>
 <Container>
 	<div class="settings-controls">
@@ -132,8 +140,8 @@
 		></button>
 	</div>
 
-	<h2>Delete Account</h2>
-	Permanently delete your Meower account. THIS CANNOT BE UNDONE.
+	<h2>Supprimer le compte</h2>
+	Supprimez définitivement votre compte Meower. ÇA NE PEUT PAS ÊTRE ANNULÉ.
 </Container>
 {/if}
 

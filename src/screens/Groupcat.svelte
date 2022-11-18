@@ -3,7 +3,7 @@
 </script>
 
 <div>
-    <div class="message">GROUP CAT 2.0!!!!</div>
+    <div class="message">GROUPE CHAT 2.0 !!!!</div>
     <Cats />
 </div>
 

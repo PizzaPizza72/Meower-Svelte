@@ -29,7 +29,7 @@
 			`${apiUrl}${path}`
 		);
 		if (!resp.ok) {
-			throw new Error("Response code is not OK; code is " + resp.status);
+			throw new Error("Le code de réponse n'est pas OK ; le code est " + resp.status);
 		}
 		const json = await resp.json();
 		return json;
@@ -63,16 +63,16 @@
 						$profileClicked === $user.name ?
 							$user.pfp_data : data.pfp_data
 					}
-					alt="{data._id}'s profile picture"
+					alt="{data._id}'a image de profil"
 					size={1.4}
 				></PFP>
 				<div class="profile-header-info">
 					<h1 class="profile-username">{data._id}</h1>
 					<div class="profile-active">{
-						$ulist.includes(data._id) ? "Online" : "Offline"
+						$ulist.includes(data._id) ? "En ligne" : "Hors ligne"
 					}</div>
 					<div class="profile-role">
-						{levels[data.lvl] || "Unknown"}
+						{levels[data.lvl] || "Inconnue"}
 					</div>
 				</div>
 			</div>
@@ -80,14 +80,14 @@
 
 		{#if data.quote}
 			<Container>
-				<h3>Quote</h3>
+				<h3>Devis</h3>
 				<p>"<i>{data.quote}</i>"</p>
 			</Container>
 		{/if}
 
 		{#if pfpSwitcher}
 			<Container>
-				<h2>Profile Picture</h2>
+				<h2>Image de profil</h2>
 				<div id="pfp-list">
 					{#each pfps as pfp}
 						<span
@@ -101,7 +101,7 @@
 						><PFP
 							online={false}
 							icon={pfp}
-							alt="Profile picture {pfp}"
+							alt="Image de profil {pfp}"
 						></PFP></span>
 					{/each}
 				</div>
@@ -109,38 +109,38 @@
 		{:else if $profileClicked === $user.name}
 			<button
 				class="long"
-				title="Change Profile Picture"
+				title="Modifier la photo de profil"
 				on:click={() => pfpSwitcher = true}
-			>Change Profile Picture</button>
+			>Modifier la photo de profil</button>
 			<button
 				class="long"
-				title={data.quote ? "Update Quote" : "Set Quote"}
+				title={data.quote ? "Mettre à jour le devis" : "Définir le devis"}
 				on:click={() => {
 					modalPage.set("setQuote");
 					modalShown.set(true);
 				}}
-			>{data.quote ? "Update Quote" : "Set Quote"}</button>
+			>{data.quote ? "Mettre à jour le devis" : "Définir le devis"}</button>
 		{/if}
 
 		<button
 			class="long"
-			title="View Recet Posts"
+			title="Afficher les messages récents"
 			on:click={()=>{
 				window.scrollTo(0,0);
 				page.set("blank");
 				tick().then(() => page.set("recent"));
 			}}
-		>View recent posts</button>
+		>Afficher les messages récents</button>
 
 		{#if $user.name && $profileClicked !== $user.name}
 			<button
 				class="long"
-				title="Report User"
+				title="Dénoncer un utilisateur"
 				on:click={()=>{
 					modalPage.set("reportUser");
 					modalShown.set(true);
 				}}
-			>Report User</button>
+			>Dénoncer un utilisateur</button>
 		{/if}
 	{:catch e}
 		<Container>
@@ -148,26 +148,26 @@
 				<PFP
 					online={$ulist.includes($profileClicked)}
 					icon={-2}
-					alt="{$profileClicked}'s profile picture"
+					alt="{$profileClicked}'a photo de profil"
 					size={1.4}
 				></PFP>
 				<div class="profile-header-info">
 					<h1 class="profile-username">{$profileClicked}</h1>
 					<div class="profile-active">{
-						$ulist.includes($profileClicked) ? "Online" : "Offline"
+						$ulist.includes($profileClicked) ? "En ligne" : "Hors ligne"
 					}</div>
-					<div class="profile-role">Unknown</div>
+					<div class="profile-role">Inconnue</div>
 				</div>
 			</div>
 		</Container>
 		<Container>
-			<h2>Error</h2>
-			We couldn't get this user's profile info.
+			<h2>Erreur</h2>
+			Nous n'avons pas pu obtenir les informations de profil de cet utilisateur.
 			<pre><code>{e}</code></pre>
-			Try again. If this issue persists,
+			Réessayer. Si ce problème persiste,
 			<a
 				href="https://github.com/Meower-Media-Co/Meower-Svelte/issues/new"
-			>create an issue on Meower Svelte's issue tracker</a> with the error code shown above.
+			>créer un problème sur le suivi des problèmes de Meower Svelte</a> avec le code d'erreur ci-dessus.
 		</Container>
 	{/await}
 </div>

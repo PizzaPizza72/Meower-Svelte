@@ -55,7 +55,7 @@
 					`${apiUrl}${path}${realPage}`
 				);
 				if (!resp.ok) {
-					throw new Error("Response code is not OK; code is " + resp.status);
+					throw new Error("Le code de réponse n'est pas OK ; le code est" + resp.status);
 				}
 				const json = await resp.json();
 
@@ -70,7 +70,7 @@
 						`${apiUrl}${path}${realPage+1}`
 					);
 					if (!resp.ok) {
-						throw new Error("Overflow response code is not OK; code is " + resp.status);
+						throw new Error("Le code de réponse de débordement n'est pas OK ; le code est" + resp.status);
 					}
 					overflowJson = await overflowResp.json();
 
@@ -157,8 +157,8 @@
 		</div>
 	{:then}
 		<Container>
-			<h1>Home</h1>
-			There are currently {_ulist.length} user(s) online{#if _ulist.length}{" "}({_ulist.join(", ")}){/if}.
+			<h1>Maison</h1>
+			Il y a actuellement {_ulist.length} utilisateurs en ligne {#if _ulist.length}{" "}({_ulist.join(", ")}){/if}.
 		</Container>
 		{#if $user.name}
 			<form 
@@ -167,7 +167,7 @@
 				on:submit|preventDefault={e => {					
 					postErrors = "";
 					if (!e.target[0].value.trim()) {
-						postErrors = "You cannot send an empty post!";
+						postErrors = "Vous ne pouvez pas envoyer un message vide !";
 						return false;
 					};
 
@@ -194,9 +194,9 @@
 							e.target[0].rows = "1";
 							e.target[0].style.height = "45px";
 						} else if (cmd.val === "E:106 | Too many requests") {
-							postErrors = "You're posting too fast!";
+							postErrors = "Vous postez trop vite !";
 						} else {
-							postErrors = "Unexpected " + cmd.val + " error!";
+							postErrors = "Erreur " + cmd.val + " inattendue !";
 						}
 					});
 					return false;
@@ -205,7 +205,7 @@
 				<textarea
 					type="text"
 					class="white"
-					placeholder="Write something..."
+					placeholder="Écris quelque chose..."
 					id="postinput"
 					name="postinput"
 					autocomplete="false"
@@ -236,16 +236,16 @@
 					}}
 					bind:this={postInput}
 				></textarea>
-				<button id="submitpost">Post</button>
+				<button id="submitpost">Poste</button>
 			</form>
 			<div class="post-errors">{postErrors}</div>
 		{/if}
 		<TypingIndicator />
 		{#if posts.length < 1}
 			{#if $user.name}
-				No posts here. Check back later or be the first to post!
+				Aucun message ici. Revenez plus tard ou soyez le premier à poster !
 			{:else}
-				No posts here. Check back later!
+				Aucun message ici. Revenez plus tard!
 			{/if}
 		{:else}
 			{#each posts as post (post.id)}
@@ -266,15 +266,15 @@
 						class="load-more"
 						on:click={() => loadPage(pagesLoaded + 1)}
 					>
-						Load More
+						Charger plus
 					</button>
 				{/if}
 			{/if}
 		</div>
 	{:catch error}
 		<Container>
-			<h1>Home</h1>
-			Error loading posts. Please try again.
+			<h1>Maison</h1>
+			Erreur lors du chargement des messages. Veuillez réessayer.
 			<pre><code>{error}</code></pre>
 		</Container>
 	{/await}

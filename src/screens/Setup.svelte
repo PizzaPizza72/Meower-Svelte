@@ -275,7 +275,7 @@
 						return false;
 					}
 
-					loginStatus = "Creating account..."
+					loginStatus = "La création du compte..."
 
 					clm.meowerRequest({
 						cmd: "direct",
@@ -289,7 +289,7 @@
 						listener: "join",
 					}).then(async val => {
 						if (val.mode === "auth" && val.payload.username === username) {
-							loginStatus = "Getting user data...";
+							loginStatus = "Obtention des données utilisateur...";
 							const profileVal = await clm.meowerRequest({
 								cmd: "direct",
 								val: {
@@ -314,15 +314,15 @@
 							await sleep(1000);
 							screen.set("main");
 						} else {
-							loginStatus = "Unexpected error logging in!";
+							loginStatus = "Erreur inattendue de connexion !";
 						}
 					}).catch(code => {
 						switch (code) {
 							case "I:015 | Account exists":
-								loginStatus = "That username already exists!";
+								loginStatus = "Ce nom d'utilisateur existe déjà!";
 								break;
 							case "I:011 | Invalid Password":
-								loginStatus = "Invalid password!";
+								loginStatus = "Mot de passe incorrect!";
 								break;
 							case "E:119 | IP Blocked":
 								$modalPage = "ipBanned";
@@ -330,13 +330,13 @@
 								loginStatus = "";
 								break;
 							case "E:019 | Illegal characters detected":
-								loginStatus = "Usernames must not have spaces or other special characters!";
+								loginStatus = "Les noms d'utilisateur ne doivent pas contenir d'espaces ou d'autres caractères spéciaux !";
 								break;
 							case "E:106 | Too many requests":
-								loginStatus = "Too many requests! Please try again later.";
+								loginStatus = "Trop de demandes ! Veuillez réessayer plus tard.";
 								break;
 							default:
-								loginStatus = `Unexpected ${code} error!`;
+								loginStatus = `Erreur inattendue: ${code}`;
 						}
 					});
 				}}
@@ -346,14 +346,14 @@
 				<p class="checkboxes">
 					<input id="remember-me" type="checkbox" bind:checked={rememberMe}>
 					<label for="remember-me">
-						Save this login
+						Enregistrer cette connexion
 					</label>
 					<br />
 					<input id="accept-terms" type="checkbox" bind:checked={acceptTerms}>
 					<label for="accept-terms">
-						I agree to <a
+						Je suis d'accord pour <a
 							href="https://meower.org/legal" target="_blank"
-						>Meower's Terms of Service and Privacy Policy</a>
+						>Conditions d'utilisation et politique de confidentialité de Meower</a>
 					</label>
 				</p>
 				<span class="login-status">{loginStatus}</span>
@@ -362,24 +362,24 @@
 						page.set("welcome");
 						loginStatus = "";
 						return false;
-					}}>Go back</button>
-					<button type="submit" disabled={!acceptTerms}>Join!</button>
+					}}>Retourner</button>
+					<button type="submit" disabled={!acceptTerms}>Rejoindre!</button>
 				</div>
 			</form>
 		</div>
 	{:else if $page === "blank"}
 		<div></div>
 	{:else if $page === "go"}
-		<div class="fullcenter">Let's go!</div>
+		<div class="fullcenter">Allons-y!</div>
 	{:else}
 		<div class="fullcenter">
 			<div class="column-ui">
-				Somehow, you got to a page that doesn't exist...
+				D'une manière ou d'une autre, vous êtes arrivé à une page qui n'existe pas...
 				<br />
-				(Current page: {$page})
+				(Page actuelle: {$page})
 
 				<div class="buttons">
-					<button on:click={()=>page.set("logo")}>Go back!</button>
+					<button on:click={()=>page.set("logo")}>Retourner</button>
 				</div>
 			</div>
 		</div>

@@ -48,7 +48,7 @@
 					`${apiUrl}${path}${realPage}`
 				);
 				if (!resp.ok) {
-					throw new Error("Response code is not OK; code is " + resp.status);
+					throw new Error("Le code de réponse n'est pas OK ; le code est " + resp.status);
 				}
 				const json = await resp.json();
 
@@ -63,7 +63,7 @@
 						`${apiUrl}${path}${realPage+1}`
 					);
 					if (!resp.ok) {
-						throw new Error("Overflow response code is not OK; code is " + resp.status);
+						throw new Error("Le code de réponse de débordement n'est pas OK ; le code est " + resp.status);
 					}
 					overflowJson = await overflowResp.json();
 
@@ -118,11 +118,11 @@
 		</div>
 	{:then}
 		<Container>
-			<h1>{$profileClicked}'s Recent Posts</h1>
-			Here are {$profileClicked}'s recent posts.
+			<h1>{$profileClicked}'a Messages récents</h1>
+			Voici les messages récents de {$profileClicked}.
 		</Container>
 		{#if posts.length < 1}
-			{$profileClicked} hasn't made any posts yet.
+			{$profileClicked} n'a pas encore publié de messages.
 		{:else}
 			{#each posts as post (post.id)}
 				<div
@@ -149,8 +149,8 @@
 		</div>
 	{:catch error}
 		<Container>
-			<h1>{$profileClicked}'s Recent Posts</h1>
-			Error loading posts. Please try again.
+			<h1>Publications récentes de {$profileClicked}</h1>
+			Erreur lors du chargement des messages. Veuillez réessayer.
 			<pre><code>{error}</code></pre>
 		</Container>
 	{/await}

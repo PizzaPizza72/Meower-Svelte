@@ -43,9 +43,9 @@
 		{:else if $page === "blank"}
 			<div></div>
 		{:else}
-			Somehow, you got to a page that doesn't exist...
+			D'une manière ou d'une autre, vous êtes arrivé à une page qui n'existe pas...
 			<br />
-			(Current page: {$page})
+			(Page actuelle : {$page})
 		{/if}
 	</div>
 </div>

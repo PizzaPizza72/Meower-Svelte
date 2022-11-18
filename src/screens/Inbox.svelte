@@ -53,7 +53,7 @@
 					{headers: $auth_header}
 				);
 				if (!resp.ok) {
-					throw new Error("Response code is not OK; code is " + resp.status);
+					throw new Error("Le code de réponse n'est pas OK ; le code est" + resp.status);
 				}
 				const json = await resp.json();
 
@@ -68,7 +68,7 @@
 						`${apiUrl}${path}${realPage+1}`
 					);
 					if (!resp.ok) {
-						throw new Error("Overflow response code is not OK; code is " + resp.status);
+						throw new Error("Le code de réponse de débordement n'est pas OK ; le code est" + resp.status);
 					}
 					overflowJson = await overflowResp.json();
 

@@ -87,7 +87,7 @@
 	{:else}
 		<Container>
 			<h1>Chats</h1>
-			Here are your chats. Press the chat button to enter a chat.
+			Voici vos discussions. Appuyez sur le bouton de chat pour entrer dans un chat.
 			<div class="settings-controls">
 				<button
 					class="circle plus"
@@ -114,8 +114,8 @@
 				></button>
 			</div>
 
-			<h1>Livechat</h1>
-			This is the public livechat. Messages in this chat don't save.
+			<h1>Chat en direct</h1>
+			Ceci est le chat en direct public. Les messages de ce chat ne sont pas enregistrés.
 		</Container>
         {#each chats as chat (chat._id)}
             <div
@@ -147,7 +147,7 @@
                     </div>
 
                     <h1>{chat.nickname}</h1>
-                    Members: {
+                    Membres: {
 						chat.members.length > 100 ? (
 							chat.members.slice(0, 99).join(", ") + "..."
 						) : chat.members.join(", ")
@@ -164,7 +164,7 @@
 						class="load-more"
 						on:click={() => loadPage(pagesLoaded + 1)}
 					>
-						Load More
+						Charger plus
 					</button>
 				{/if}
 			{/if}
@@ -172,14 +172,14 @@
 	{/if}
 	{#if toLeaveChat}
 		<Modal on:close={() => {toLeaveChat = false}}>
-			<h2 slot="header">Leave Chat</h2>
+			<h2 slot="header">Quitter le chat</h2>
 			<div slot="default">
-				<span>Are you sure you want to leave {$chatName}?</span>
+				<span>Voulez-vous vraiment quitter {$chatName} ?</span>
 				<br /><br />
 				<div class="modal-buttons">
 					<button on:click={() => {
 						toLeaveChat = false;
-					}}>No</button>
+					}}>Non</button>
 					<button on:click={() => {
 						chats = chats.filter(v => v._id !== $chatid);
 						clm.meowerRequest({
@@ -190,7 +190,7 @@
 							}
 						});
 						toLeaveChat = false;
-					}}>Yes</button>
+					}}>Oui</button>
 				</div>
 			</div>
 		</Modal>

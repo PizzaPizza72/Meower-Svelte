@@ -11,20 +11,20 @@
 </script>
 
 <Modal on:close={() => {$modalShown = false}}>
-    <h2 slot="header">Change Password</h2>
+    <h2 slot="header">Changer le mot de passe</h2>
     <div slot="default">
 		<form
 			on:submit|preventDefault={async e => {
 				if (!e.target[0].value) {
-					changeStatus = "You must specify your current password";
+					changeStatus = "Vous devez spécifier votre mot de passe actuel";
 					return false;
 				}
 				if (!e.target[1].value) {
-					changeStatus = "You must specify a new password to change your password";
+					changeStatus = "Vous devez spécifier un nouveau mot de passe pour changer votre mot de passe";
 					return false;
 				}
 				if (e.target[1].value !== e.target[2].value) {
-					changeStatus = "New passwords do not match";
+					changeStatus = "Les nouveaux mots de passe ne correspondent pas";
 					return false;
 				}
 
@@ -44,12 +44,12 @@
 			{#if changeStatus}
 				<label for="old-password-input" style="color: red;">{changeStatus}</label>
 			{/if}
-			<input id="old-password-input" type="password" class="modal-input white" placeholder="Current Password" maxlength="64" /><br /><br />
-			<input id="new-password-input" type="password" class="modal-input white" placeholder="New Password" maxlength="64" /><br /><br />
-			<input type="password" class="modal-input white" placeholder="Confirm New Password" maxlength="64" /><br /><br />
+			<input id="old-password-input" type="password" class="modal-input white" placeholder="Mot de passe actuel" maxlength="64" /><br /><br />
+			<input id="new-password-input" type="password" class="modal-input white" placeholder="Nouveau mot de passe" maxlength="64" /><br /><br />
+			<input type="password" class="modal-input white" placeholder="Confirmer le nouveau mot de passe" maxlength="64" /><br /><br />
 			<div class="modal-buttons">
-				<button type="button" on:click={() => {$modalShown = false}}>Cancel</button>
-				<button type="submit">Change Password</button>
+				<button type="button" on:click={() => {$modalShown = false}}>Annuler</button>
+				<button type="submit">Changer le mot de passe</button>
 			</div>
 		</form>
 	</div>

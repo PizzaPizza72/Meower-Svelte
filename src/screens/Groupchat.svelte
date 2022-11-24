@@ -166,7 +166,7 @@
                 addPost({
 					post_id: id++,
 					user: "Server",
-					content: `${cmd.val.u} left ${$chatName}.`,
+					content: `${cmd.val.u} a quitté ${$chatName}.`,
 					date: new Date().getTime()/1000,
 				});
             }
@@ -175,7 +175,7 @@
                 addPost({
 					post_id: id++,
 					user: "Server",
-					content: `${cmd.val.u} joined ${$chatName}!`,
+					content: `${cmd.val.u} a rejoint ${$chatName} !`,
 					date: new Date().getTime()/1000,
 				});
             }

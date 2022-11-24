@@ -11,7 +11,7 @@
 
 	function doCreate(nickname) {
 		try {
-			createStatus = "Creating chat...";
+			createStatus = "Création de chat...";
 			clm.meowerRequest({
 				cmd: "direct",
 				val: {
@@ -23,22 +23,22 @@
 				mainPage.set("blank");
 				tick().then(() => mainPage.set("chatlist"));
 			}).catch(code => {
-				createStatus = `Unexpected ${code} error!`;
+				createStatus = `Erreur ${code} inattendue !`;
 			});
 		} catch(e) {
 			console.error(e);
-			createStatus = "Error logging in: " + e;
+			createStatus = "Erreur de connexion : " + e;
 		}
 	}
 </script>
 
 <Modal on:close={() => {$modalShown = false}}>
-    <h2 slot="header">Create Chat</h2>
+    <h2 slot="header">Créer une conversation</h2>
     <div slot="default">
 		<form
 			on:submit|preventDefault={e => {
 				if (!e.target[0].value) {
-					createStatus = "You must specify a nickname to create the chat!";
+					createStatus = "Vous devez spécifier un pseudo pour créer le chat !";
 					return false;
 				}
 				doCreate(
@@ -50,10 +50,11 @@
 			{#if createStatus}
 			<span class="login-status">{createStatus}</span><br />
 			{/if}
-			<input type="text" class="modal-input white" placeholder="Nickname" maxlength="20" autofocus><br /><br />
+			<!-- svelte-ignore a11y-autofocus -->
+			<input type="text" class="modal-input white" placeholder="Surnom" maxlength="20" autofocus><br /><br />
 			<div class="modal-buttons">
-				<button type="button" on:click={() => {$modalShown = false}}>Cancel</button>
-				<button type="submit">Create</button>
+				<button type="button" on:click={() => {$modalShown = false}}>Annuler</button>
+				<button type="submit">Créer</button>
 			</div>
 		</form>
 	</div>

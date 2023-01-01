@@ -59,9 +59,9 @@ button,
 input[type="text"],
 input[type="password"],
 textarea {
-	border: solid 2px var(--foreground-orange);
-	border-radius: 1px;
-	outline: none;
+    border: solid 2px var(--foreground-orange);
+    border-radius: 5px;
+    outline: none;
 
 	background-color: var(--orange);
 	color: var(--foreground-orange);
@@ -253,6 +253,13 @@ a {
 	color: #0066ff;
 }
 
+.mention {
+    margin: 0;
+    padding: 0;
+    color: lightblue;
+    text-decoration: underline;
+}
+
 :disabled {
 	opacity: 0.5;
 }
@@ -265,4 +272,12 @@ a {
 .modal-buttons {
 	display: flex;
 	justify-content: space-between;
+}
+
+hr {
+    height: 2px;
+    color: var(--orange);
+    background-color: var(--orange);
+    border: none;
+    border-radius: 5px;
 }

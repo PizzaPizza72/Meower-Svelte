@@ -3,7 +3,7 @@ BetterMeower is a fork of Meower Svelte with some new and improved features!
 
 ## [Launch BetterMeower](https://open.bettermeower.app)
 
-## Features
+## (Planned) Features
 BetterMeower contains many new features and improvements over standard Meower, including (but not limited to)
 
 ✅ Better dark orange theme

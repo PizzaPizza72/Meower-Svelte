@@ -13,3 +13,5 @@ To upload the icons.
 # Why did you need to upload the icons?
 
 Stop.
+
+*Optional* - Check your favicon with the [favicon checker](https://realfavicongenerator.net/favicon_checker)

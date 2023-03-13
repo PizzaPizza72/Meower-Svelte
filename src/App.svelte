@@ -52,29 +52,28 @@
 >
 	{#if $disconnected}
 		<Modal>
-			<h2 slot="header">Me-owch.</h2>
+			<h2 slot="header">Me-owch!</h2>
 			<div slot="default">
 				<p>
 					{#if $disconnectReason === ""}
-						Something went wrong and the connection to Meower was
-						lost.
+						The connection to Meower has been lost.
 					{:else if $disconnectReason === "Failed to load userdata"}
 						An unexpected error occurred while trying to load your
-						userdata! Check console for more information.
+						userdata! Check your browser console for more information.
 					{:else if $disconnectReason === "E:119 | IP Blocked"}
 						The server has blocked your IP address ({link.ip}).
 					{:else if $disconnectReason == "E:110 | ID conflict"}
 						There has been a hiccup! Looks like you logged into
-						Meower from another device.
+						Meower from another device/browser tab.
 						<br /><br />
-						Please check any devices currently logged into Meower and
+						Please check any devices/browser tabs currently logged into Meower and
 						try again.
 					{:else if $disconnectReason == "E:018 | Account Banned"}
-						You have been banned by a moderator.
+						A moderator has banned you from Meower.
 					{:else if $disconnectReason == "E:020 | Kicked"}
-						You have been kicked by a moderator.
+						A moderator has kicked you from Meower.
 					{:else}
-						We ran into an error trying to connect to the server.
+						There was an error connecting to the server.
 						<pre><code>{$disconnectReason}</code></pre>
 					{/if}
 				</p>
